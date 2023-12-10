@@ -7,7 +7,7 @@ import  dotenv from "dotenv";
 dotenv.config();
 export const commands = [
     encriptCommand.toJSON(),
-    decriptCommand.toJSON(),
+    decriptCommand.toJSON()
 ];
 const TOKEN = process.env.TOKEN as string;
 const CLIENT_ID = process.env.CLIENT_ID as string;
@@ -15,7 +15,7 @@ const client = new Client({intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.DirectMessages,
-    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.MessageContent
 ] });
 const registerCommand = async()=>{
     const rest = new REST({ version: '10' }).setToken(TOKEN);
