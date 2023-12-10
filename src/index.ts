@@ -42,7 +42,6 @@ const startBot = async()=>{
             const sendDataString = sendData as string; 
             const encriptData = await encriptDataWithCryptoJs(sendSecretKeyString,sendDataString);
             await interaction.reply(encriptData);
-            await interaction.reply(encriptData);
         }
         if (interaction.commandName === "decript" ) {
             const sendSecretKey =  interaction.options.getString('secretkey');
