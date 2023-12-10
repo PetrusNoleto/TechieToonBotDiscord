@@ -42,15 +42,16 @@ const startBot = async()=>{
             const sendDataString = sendData as string; 
             const encriptData = await encriptDataWithCryptoJs(sendSecretKeyString,sendDataString);
             await interaction.reply(encriptData);
-        };
+            await interaction.reply(encriptData);
+        }
         if (interaction.commandName === "decript" ) {
-            const sendSecretKey = interaction.options.getString('secretkey');
-            const sendData = interaction.options.getString('data');
+            const sendSecretKey =  interaction.options.getString('secretkey');
+            const sendData =  interaction.options.getString('data');
             const sendSecretKeyString = sendSecretKey as string;
             const sendDataString = sendData as string; 
             const encriptData = await decriptDataWithCryptoJs(sendSecretKeyString,sendDataString);
             await interaction.reply(encriptData);
-        };
+        }
       });
       client.login(TOKEN);
 }
