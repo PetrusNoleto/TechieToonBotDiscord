@@ -4,13 +4,17 @@ import { decriptCommand, encriptCommand } from './commands/commands';
 import { encriptDataWithCryptoJs } from './functions/encriptDataWithCryptojs';
 import { decriptDataWithCryptoJs } from './functions/decriptDataWithCryptoJs';
 import  dotenv from "dotenv";
+import express from 'express';
+
 dotenv.config();
 export const commands = [
     encriptCommand.toJSON(),
     decriptCommand.toJSON()
 ];
+const server = express()
 const TOKEN = process.env.TOKEN as string;
 const CLIENT_ID = process.env.CLIENT_ID as string;
+const SERVER_PORT = process.env.SERVER_PORT as string
 const client = new Client({intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
@@ -54,5 +58,11 @@ const startBot = async()=>{
       });
       client.login(TOKEN);
 }
-startBot();
+
+function serverStart(){
+  server.listen(SERVER_PORT,()=>{
+    startBot();
+  })
+}
+serverStart()
 
